@@ -13,10 +13,22 @@
         <action
             android:id="@+id/action_menuFragment_to_addChallengeFragment"
             app:destination="@id/addChallengeFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_challengeInfo"
+            app:destination="@id/challengeInfo" />
     </fragment>
     <fragment
         android:id="@+id/addChallengeFragment"
         android:name="com.example.challengeyourself.AddChallengeFragment"
         android:label="fragment_add_challenge"
         tools:layout="@layout/fragment_add_challenge" />
+    <fragment
+        android:id="@+id/challengeInfo"
+        android:name="com.example.challengeyourself.ChallengeInfo"
+        android:label="fragment_challenge_info"
+        tools:layout="@layout/fragment_challenge_info" >
+        <argument
+            android:name="challengeId"
+            app:argType="string" />
+    </fragment>
 </navigation>
