@@ -26,8 +26,6 @@ public class MenuChallengesListFragment extends Fragment {
 
         ListView list = view.findViewById(R.id.challenge_list_adapter_v);
 
-        ArrayList<Challenge> peopleList = new ArrayList<>();
-
         ChallengeItemAdapter adapter = new ChallengeItemAdapter(getContext(), R.layout.challenge_list_adapter);
         list.setAdapter(adapter);
 

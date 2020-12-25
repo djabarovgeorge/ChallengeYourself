@@ -1,19 +1,25 @@
 package com.example.challengeyourself.ChallengeModel;
 
 public class Challenge {
-    String id;
+    int id;
     String name;
-    String numberOfDays;
+    int numberOfDays;
     String freeText;
 
-    public Challenge(String id, String name, String numberOfDays, String freeText) {
+    public Challenge(String name, int numberOfDays, String freeText) {
+        this.name = name;
+        this.numberOfDays = numberOfDays;
+        this.freeText = freeText;
+    }
+
+    public Challenge(int id, String name, int numberOfDays, String freeText) {
         this.id = id;
         this.name = name;
         this.numberOfDays = numberOfDays;
         this.freeText = freeText;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -21,7 +27,7 @@ public class Challenge {
         this.name = name;
     }
 
-    public void setNumberOfDays(String numberOfDays) {
+    public void setNumberOfDays(int numberOfDays) {
         this.numberOfDays = numberOfDays;
     }
 
@@ -29,11 +35,11 @@ public class Challenge {
         this.freeText = freeText;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public String getNumberOfDays() {
+    public int getNumberOfDays() {
         return numberOfDays;
     }
 
@@ -41,7 +47,16 @@ public class Challenge {
         return freeText;
     }
 
-    public String getName(){
-        return name;
+    public String getName(){ return name; }
+
+    @Override
+    public String toString() {
+        return "Challenge{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", numberOfDays=" + numberOfDays +
+                ", freeText='" + freeText + '\'' +
+                '}';
     }
+
 }

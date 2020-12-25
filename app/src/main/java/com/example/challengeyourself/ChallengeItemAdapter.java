@@ -27,7 +27,6 @@ class ChallengeItemAdapter extends ArrayAdapter<Challenge> {
 
     public ChallengeItemAdapter(Context context, int resource) {
         super(context, resource);
-//        challengeListFromDB = challengeList;
         challengeListFromDB = ChallengeModel.instance.getChallengesList();
         mContext = context;
         mResource = resource;
@@ -45,7 +44,7 @@ class ChallengeItemAdapter extends ArrayAdapter<Challenge> {
 
     @Override
     public long getItemId(int position) {
-        return Long.parseLong(challengeListFromDB.get(position).getId());
+        return challengeListFromDB.get(position).getId();
     }
 
     @NonNull
@@ -56,8 +55,11 @@ class ChallengeItemAdapter extends ArrayAdapter<Challenge> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             view = inflater.inflate(R.layout.challenge_item , parent, false);
         }
-        Log.d(TAG, view.toString());
+//        Log.d(TAG, view.toString());
         Log.d(TAG, "test");
+
+        Log.d(TAG, challengeListFromDB.get(position).toString());
+
 
         //Extract data from database
         String getNameFromDB = challengeListFromDB.get(position).getName();
