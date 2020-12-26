@@ -1,6 +1,8 @@
 package com.example.challengeyourself.ChallengeModel;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.example.challengeyourself.DataBase.MyChallengesTable;
 
@@ -9,7 +11,7 @@ import java.util.List;
 
 public class MyChallengeModel {
     public final static MyChallengeModel instance = new MyChallengeModel();
-    private List<ChallengeTrack> challengesList = new ArrayList<ChallengeTrack>();
+    private List<ChallengeTrack> myChallengesList = new ArrayList<>();
 
     private MyChallengesTable myChallengesTable;
 
@@ -24,16 +26,21 @@ public class MyChallengeModel {
 
     public List<ChallengeTrack> getChallengesList() {return myChallengesTable.getAllChallenges();}
 
-//    public MyChallenges getChallenge(int id) {
-////        List<MyChallenges> chList = getChallengesList();
-//        for (MyChallenges challenge: chList) {
-////            if(challenge.id == id)
-//                return challenge;
-//        }
-//        return null;
-//    }
-
-    public void addChallenge(ChallengeTrack challenge){
-//        myChallengesTable.addChallenge(challenge);
+    public ChallengeTrack getChallengeTrackById(int id) {
+        List<ChallengeTrack> chList = getChallengesList();
+        for (ChallengeTrack challenge: chList) {
+            if(challenge.getChallenge().getId() == id)
+                return challenge;
+        }
+        return null;
     }
+
+    public void addToMyChallenge(ChallengeTrack challenge){
+        myChallengesTable.addChallenge(challenge);
+    }
+
+    public boolean isChallengeRegistered(int challengeId) {
+        return myChallengesTable.isChallengeRegistered(challengeId);
+    }
+
 }

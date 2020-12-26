@@ -49,10 +49,11 @@ public class MyChallengesTable extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+
         for (int i = 0; i < ch.getDayTrack().size() ; i++) {
             cv.put(COLUMN_CHALLENGE_ID, ch.getChallenge().getId());
             cv.put(COLUMN_DAY, i+1);
-            cv.put(COLUMN_IS_DONE, ch.getDayTrack().get(i));
+            cv.put(COLUMN_IS_DONE, ch.getDayTrack().get(i+1));
 
             long insert = db.insert(MY_CHALLENGES_TABLE, null, cv);
 
@@ -67,6 +68,7 @@ public class MyChallengesTable extends SQLiteOpenHelper {
         String queryString = "SELECT * FROM " + MY_CHALLENGES_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
+
         Hashtable<Integer, Boolean> dayTrack = new Hashtable<>();
         Hashtable<Integer, Hashtable<Integer, Boolean>> challengeTrack = new Hashtable<>();
 
@@ -88,7 +90,6 @@ public class MyChallengesTable extends SQLiteOpenHelper {
                 else{
                     challengeTrack.put(cursorChallengeID, dayTrack); // else it does not -> add new one
                 }
-
                 cursor.moveToNext();
             }
         }
@@ -115,6 +116,19 @@ public class MyChallengesTable extends SQLiteOpenHelper {
                 return ch;
         }
         return null;
+    }
+
+    public boolean isChallengeRegistered(int challengeId) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String Query = "Select * from " + MY_CHALLENGES_TABLE + " where " + COLUMN_CHALLENGE_ID + " = " + challengeId;
+        Cursor cursor = db.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
     }
 
     @Override

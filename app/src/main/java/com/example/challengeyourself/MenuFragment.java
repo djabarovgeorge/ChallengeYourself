@@ -28,11 +28,8 @@ public class MenuFragment extends Fragment {
         Button myChallenges = view.findViewById(R.id.menu_fragment_mychallenges_btn);
         myChallenges.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_myChallenges));
 
-
         Button addChallengeButton = view.findViewById(R.id.main_fragment_addchallenge_button);
         addChallengeButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_menuFragment_to_addChallengeFragment));
-
-
 
         return view;
     }

@@ -19,6 +19,13 @@ public class Challenge {
         this.freeText = freeText;
     }
 
+    public Challenge(Challenge challenge) {
+        this.id = challenge.getId();
+        this.name = challenge.getName();
+        this.numberOfDays = challenge.getNumberOfDays();
+        this.freeText = challenge.getFreeText();
+    }
+
     public void setId(int id) {
         this.id = id;
     }

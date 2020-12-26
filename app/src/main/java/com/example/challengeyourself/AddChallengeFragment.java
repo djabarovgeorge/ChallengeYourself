@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.challengeyourself.ChallengeModel.Challenge;
 import com.example.challengeyourself.ChallengeModel.ChallengeModel;
@@ -35,6 +36,7 @@ public class AddChallengeFragment extends Fragment {
             public void onClick(View v) {
                 // add new challenge to db
                 ChallengeModel.instance.addChallenge(new Challenge(nameView.getText().toString(), Integer.parseInt(durationView.getText().toString()),descriptionView.getText().toString()));
+                Toast.makeText(getActivity(), "Challenge was added to the list", Toast.LENGTH_LONG).show();
                 Navigation.findNavController(view).popBackStack();
             }
         });

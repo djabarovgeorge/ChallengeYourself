@@ -13,6 +13,7 @@ public class ChallengeTrack {
     public ChallengeTrack(Challenge challenge) {
         this.challenge = challenge;
         List<Boolean> track;
+        dayTrack = new Hashtable<Integer,Boolean>();
         for (int i = 0; i < challenge.getNumberOfDays(); i++) {
             dayTrack.put(i+1, false);
         }

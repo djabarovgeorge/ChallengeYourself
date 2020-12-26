@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_menuFragment_to_challengeInfo"
             app:destination="@id/challengeInfo" />
+        <action
+            android:id="@+id/action_menuFragment_to_myChallenges"
+            app:destination="@id/myChallenges" />
     </fragment>
     <fragment
         android:id="@+id/addChallengeFragment"
@@ -27,6 +30,24 @@
         android:name="com.example.challengeyourself.ChallengeInfo"
         android:label="fragment_challenge_info"
         tools:layout="@layout/fragment_challenge_info" >
+        <argument
+            android:name="challengeId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/myChallenges"
+        android:name="com.example.challengeyourself.MyChallenges.MyChallenges"
+        android:label="fragment_my_challenges"
+        tools:layout="@layout/fragment_my_challenges" >
+        <action
+            android:id="@+id/action_myChallenges_to_myChallengeTrackDetails"
+            app:destination="@id/myChallengeTrackDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/myChallengeTrackDetails"
+        android:name="com.example.challengeyourself.MyChallenges.MyChallengeTrackDetails"
+        android:label="fragment_my_challenge_track_details"
+        tools:layout="@layout/fragment_my_challenge_track_details" >
         <argument
             android:name="challengeId"
             app:argType="string" />

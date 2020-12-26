@@ -1,4 +1,4 @@
-package com.example.challengeyourself;
+package com.example.challengeyourself.MyChallenges;
 
 import android.content.Context;
 import android.util.Log;
@@ -6,44 +6,45 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import com.example.challengeyourself.ChallengeModel.Challenge;
-import com.example.challengeyourself.ChallengeModel.ChallengeModel;
+import com.example.challengeyourself.R;
 
 import java.util.List;
 
-public class ChallengeItemAdapter extends ArrayAdapter<Challenge> {
+public class ChallengeTrackAdapter extends ArrayAdapter<CheckBox> {
     private static final String TAG = "TAG - Challenge_I_A";
 
-//    private int lastPosition = -1;
+    //    private int lastPosition = -1;
     private Context mContext;
     private int mResource;
 
-    public List<Challenge> challengeListFromDB;
+    public List<CheckBox> checkBoxList;
 
-    public ChallengeItemAdapter(Context context, int resource, List<Challenge> list) {
+    public ChallengeTrackAdapter(Context context, int resource, List<CheckBox> list) {
         super(context, resource);
-        challengeListFromDB = list;
+        checkBoxList = list;
         mContext = context;
         mResource = resource;
     }
 
     @Override
     public int getCount() {
-        return this.challengeListFromDB.size();
+        return this.checkBoxList.size();
     }
 
     @Override
-    public Challenge getItem(int position) {
-        return challengeListFromDB.get(position);
+    public CheckBox getItem(int position) {
+        return checkBoxList.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return challengeListFromDB.get(position).getId();
+        return checkBoxList.get(position).getId();
     }
 
     @NonNull
@@ -57,15 +58,15 @@ public class ChallengeItemAdapter extends ArrayAdapter<Challenge> {
 //        Log.d(TAG, view.toString());
         Log.d(TAG, "test");
 
-        Log.d(TAG, challengeListFromDB.get(position).toString());
+        Log.d(TAG, checkBoxList.get(position).toString());
 
 
         //Extract data from database
-        String getNameFromDB = challengeListFromDB.get(position).getName();
+//        String getNameFromDB = checkBoxList.get(position).getName();
 
         // TODO set View item - need to add more logic to here - now will update only the text
         TextView tv = view.findViewById(R.id.challenge_item_text);
-        tv.setText(getNameFromDB);
+        tv.setText(String.valueOf(position));
 
         return view;
     }

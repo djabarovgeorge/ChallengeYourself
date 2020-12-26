@@ -13,8 +13,10 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import com.example.challengeyourself.ChallengeModel.Challenge;
+import com.example.challengeyourself.ChallengeModel.ChallengeModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static androidx.navigation.fragment.NavHostFragment.findNavController;
 
@@ -26,7 +28,8 @@ public class MenuChallengesListFragment extends Fragment {
 
         ListView list = view.findViewById(R.id.challenge_list_adapter_v);
 
-        ChallengeItemAdapter adapter = new ChallengeItemAdapter(getContext(), R.layout.challenge_list_adapter);
+        List<Challenge> challengeListFromDB = ChallengeModel.instance.getChallengesList();
+        ChallengeItemAdapter adapter = new ChallengeItemAdapter(getContext(), R.layout.challenge_list_adapter, challengeListFromDB);
         list.setAdapter(adapter);
 
 
@@ -40,14 +43,6 @@ public class MenuChallengesListFragment extends Fragment {
 
             }
         });
-
         return view;
     }
 }
-
-//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//@Override
-//public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        Log.d(TAG, "the position is: " + String.valueOf(position));
-//        }
-//        });

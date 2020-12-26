@@ -7,21 +7,37 @@
     tools:context=".MenuFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <Button
+        android:id="@+id/menu_fragment_mychallenges_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="My Challenges"
+        app:layout_constraintBottom_toTopOf="@+id/menu_fragment_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/menu_fragment_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
         android:gravity="center"
         android:text="@string/challenge_menu"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu_fragment_mychallenges_btn"
         tools:text="Menu page" />
 
     <FrameLayout
@@ -30,7 +46,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         app:layout_constraintBottom_toTopOf="@+id/main_fragment_addchallenge_button"
