@@ -30,6 +30,8 @@ import static com.example.challengeyourself.MenuFragmentDirections.actionMenuFra
 public class MyChallengesListFragment extends Fragment {
 
     List<Challenge> challengeList;
+    private List<ChallengeTrack> myChallengeListFromDB;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class MyChallengesListFragment extends Fragment {
 
         ListView list = view.findViewById(R.id.challenge_list_adapter_v);
 
-        List<ChallengeTrack> myChallengeListFromDB = MyChallengeModel.instance.getChallengesList();
+        myChallengeListFromDB = MyChallengeModel.instance.getChallengesList();
 
         // Create Challenge list for view
         challengeList = new ArrayList<>();

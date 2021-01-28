@@ -4,4 +4,13 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="challenge_menu">Challenge Menu</string>
     <string name="add_challenge">Add Challenge</string>
+    <string name="fragment_add_challenge_name">Name</string>
+    <string name="fragment_add_challenge_description">Description</string>
+    <string name="fragment_add_challenge_duration">Duration</string>
+    <string name="fragment_add_challenge_save_btn">Save</string>
+    <string name="fragment_challenge_info_challenge_name">Challenge name:</string>
+    <string name="fragment_challenge_info_challenge_name_challenge_id">Challenge name:</string>
+    <string name="fragment_challenge_info_challenge_name_description">Description:</string>
+    <string name="fragment_challenge_info_challenge_name_duration">Duration:</string>
+    <string name="fragment_challenge_info_challenge_name_add_to_my_challenges_btn">Add to my challenges</string>
 </resources>

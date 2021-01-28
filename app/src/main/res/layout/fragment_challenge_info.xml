@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/challenge_info_id_v"
+            android:id="@+id/challenge_info_name_v"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -24,7 +24,7 @@
             android:layout_marginTop="26dp"
             android:layout_marginEnd="6dp"
             android:layout_marginRight="6dp"
-            android:text="Challenge ID:"
+            android:text="@string/fragment_challenge_info_challenge_name_challenge_id"
             android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@+id/challenge_info_text_v"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
             android:layout_marginTop="26dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="***"
+            android:text=""
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/challenge_info_id_v"
@@ -63,7 +63,7 @@
             android:layout_marginTop="26dp"
             android:layout_marginEnd="6dp"
             android:layout_marginRight="6dp"
-            android:text="Description:"
+            android:text="@string/fragment_challenge_info_challenge_name_description"
             android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@+id/challenge_info_description_text"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
             android:layout_marginTop="26dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="***"
+            android:text=""
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/challenge_info_description_v"
@@ -104,7 +104,7 @@
             android:layout_marginTop="26dp"
             android:layout_marginEnd="6dp"
             android:layout_marginRight="6dp"
-            android:text="Duration:"
+            android:text="@string/fragment_challenge_info_challenge_name_duration"
             android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@+id/challenge_info_duration_text"
             app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +112,7 @@
 
         <TextView
             android:id="@+id/challenge_info_duration_text"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:layout_marginLeft="6dp"
@@ -120,7 +120,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:text="***"
+            android:text=""
             android:textSize="30sp" />
     </LinearLayout>
 
@@ -133,7 +133,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="16dp"
-        android:text="Add to my challenges"
+        android:text="@string/fragment_challenge_info_challenge_name_add_to_my_challenges_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"

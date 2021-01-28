@@ -17,5 +17,7 @@ public class MainActivity extends AppCompatActivity {
         ChallengeModel.instance.initDatabase(this);
         MyChallengeModel.instance.initDatabase(this);
 
+        // clean my challenges table
+//        MyChallengeModel.instance.clearTable();
     }
 }

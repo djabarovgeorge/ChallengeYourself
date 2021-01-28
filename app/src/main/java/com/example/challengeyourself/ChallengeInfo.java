@@ -41,11 +41,12 @@ public class ChallengeInfo extends Fragment {
         TextView tvDescription = view.findViewById(R.id.challenge_info_description_text);
         TextView tvDuration = view.findViewById(R.id.challenge_info_duration_text);
 
-        String chIdString = String.valueOf(challengeListFromDB.get(idInteger).getId());
+        String chNameString = String.valueOf(challengeListFromDB.get(idInteger).getName());
+        String chDescriptionString = String.valueOf(challengeListFromDB.get(idInteger).getFreeText());
         String chDurationString = String.valueOf(challengeListFromDB.get(idInteger).getNumberOfDays());
 
-        tvId.setText(chIdString);
-        tvDescription.setText(challengeListFromDB.get(idInteger).getFreeText());
+        tvId.setText(chNameString);
+        tvDescription.setText(chDescriptionString);
         tvDuration.setText(chDurationString);
 
         Button saveToMyChallengesBtn = view.findViewById(R.id.challenge_info_save_btn);
@@ -60,7 +61,7 @@ public class ChallengeInfo extends Fragment {
                     Toast.makeText(getActivity(), "This challenge is already registered", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    MyChallengeModel.instance.addToMyChallenge(new ChallengeTrack(challengeListFromDB.get(idInteger)));
+                    MyChallengeModel.instance.addToMyChallenge(new ChallengeTrack(ChallengeModel.instance.getChallenge(challengeIndex)));
                     Toast.makeText(getActivity(), "Challenge was added.", Toast.LENGTH_LONG).show();
                     Navigation.findNavController(view).popBackStack();
                 }
