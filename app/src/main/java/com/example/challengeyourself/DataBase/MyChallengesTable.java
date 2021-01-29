@@ -162,9 +162,6 @@ public class MyChallengesTable extends SQLiteOpenHelper {
             cv.put(COLUMN_DAY, currDay);
             cv.put(COLUMN_IS_DONE, currIsChecked);
 
-//            db.update(MY_CHALLENGES_TABLE, cv,
-//                        COLUMN_CHALLENGE_ID + "= ? AND" + COLUMN_DAY + " = ? ",
-//                         new String[]{String.valueOf(challengeId) , String.valueOf(currDay)});
 
             String strSQL = "UPDATE "+ MY_CHALLENGES_TABLE +
                     " SET " + COLUMN_IS_DONE + " = " + currIsChecked +
@@ -173,13 +170,6 @@ public class MyChallengesTable extends SQLiteOpenHelper {
 
             db.execSQL(strSQL);
 
-
-//            long insert = db.insert(MY_CHALLENGES_TABLE, null, cv);
-
-//            if(insert == -1) {
-//                db.close();
-//                return false;
-//            }
         }
         db.close();
         return true;

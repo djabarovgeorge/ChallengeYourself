@@ -87,6 +87,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -123,6 +124,17 @@
             android:text=""
             android:textSize="30sp" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/challenge_info_image_view"
+        android:layout_width="147dp"
+        android:layout_height="142dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:src="@android:drawable/ic_menu_gallery"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
     <Button
         android:id="@+id/challenge_info_save_btn"

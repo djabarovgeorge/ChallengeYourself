@@ -1,11 +1,7 @@
 package com.example.challengeyourself.ChallengeModel;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-
 import com.example.challengeyourself.DataBase.MyChallengesTable;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +58,7 @@ public class MyChallengeModel {
     public boolean clearTable(){
         return myChallengesTable.clearTable();
     }
+
     public ChallengeTrack getChallengeTrackObjectById(int id) {
         ChallengeTrack item = getChallengeTrackById(id);
         return null;

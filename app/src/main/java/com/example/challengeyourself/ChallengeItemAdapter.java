@@ -1,11 +1,14 @@
 package com.example.challengeyourself;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,12 +26,18 @@ public class ChallengeItemAdapter extends ArrayAdapter<Challenge> {
     private int mResource;
 
     public List<Challenge> challengeListFromDB;
+    private Challenge listFromDB;
 
     public ChallengeItemAdapter(Context context, int resource, List<Challenge> list) {
         super(context, resource);
         challengeListFromDB = list;
         mContext = context;
         mResource = resource;
+    }
+    public void updateChallengeList(List<Challenge> newlist) {
+        challengeListFromDB.clear();
+        challengeListFromDB.addAll(newlist);
+        this.notifyDataSetChanged();
     }
 
     @Override
@@ -61,11 +70,16 @@ public class ChallengeItemAdapter extends ArrayAdapter<Challenge> {
 
 
         //Extract data from database
-        String getNameFromDB = challengeListFromDB.get(position).getName();
+        listFromDB = challengeListFromDB.get(position);
 
         // TODO set View item - need to add more logic to here - now will update only the text
-        TextView tv = view.findViewById(R.id.challenge_item_text);
-        tv.setText(getNameFromDB);
+        TextView textView = view.findViewById(R.id.challenge_item_text);
+        ImageView imageView = view.findViewById(R.id.challenge_item_image);
+
+        textView.setText(listFromDB.getName());
+
+        Bitmap bitmap = BitmapFactory.decodeByteArray(listFromDB.getImage(), 0 , listFromDB.getImage().length);
+        imageView.setImageBitmap(bitmap);
 
         return view;
     }

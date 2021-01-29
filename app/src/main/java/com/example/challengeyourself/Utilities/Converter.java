@@ -1,12 +1,17 @@
 package com.example.challengeyourself.Utilities;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+
 import com.example.challengeyourself.ChallengeModel.DayTrack;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Set;
 
-public class Convertor {
+public class Converter {
     public ArrayList<DayTrack> FromHashToObjectList(Hashtable<Integer,Boolean> listCheck)
     {
         ArrayList<DayTrack> trackList = new ArrayList<>();
@@ -32,5 +37,13 @@ public class Convertor {
         }
 
         return trackList;
+    }
+
+    public static byte[] ImageViewToByte(ImageView image) {
+        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
     }
 }

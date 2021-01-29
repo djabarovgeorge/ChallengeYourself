@@ -1,5 +1,7 @@
 package com.example.challengeyourself;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +36,7 @@ public class ChallengeInfo extends Fragment {
         final List<Challenge> challengeListFromDB = ChallengeModel.instance.getChallengesList();
 
 
+        assert getArguments() != null;
         String idString = ChallengeInfoArgs.fromBundle(getArguments()).getChallengeId();
         final int idInteger = Integer.parseInt(idString);
         Log.d(TAG ,"text: " + idString);
@@ -40,19 +44,24 @@ public class ChallengeInfo extends Fragment {
         TextView tvId = view.findViewById(R.id.challenge_info_text_v);
         TextView tvDescription = view.findViewById(R.id.challenge_info_description_text);
         TextView tvDuration = view.findViewById(R.id.challenge_info_duration_text);
+        ImageView imageView = view.findViewById(R.id.challenge_info_image_view);
+
 
         String chNameString = String.valueOf(challengeListFromDB.get(idInteger).getName());
         String chDescriptionString = String.valueOf(challengeListFromDB.get(idInteger).getFreeText());
         String chDurationString = String.valueOf(challengeListFromDB.get(idInteger).getNumberOfDays());
+        byte[] imageByte = challengeListFromDB.get(idInteger).getImage();
 
         tvId.setText(chNameString);
         tvDescription.setText(chDescriptionString);
         tvDuration.setText(chDurationString);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(imageByte, 0 , imageByte.length);
+        imageView.setImageBitmap(bitmap);
 
-        Button saveToMyChallengesBtn = view.findViewById(R.id.challenge_info_save_btn);
+        Button addMyChallengesBtn = view.findViewById(R.id.challenge_info_save_btn);
 
 
-        saveToMyChallengesBtn.setOnClickListener(new View.OnClickListener() {
+        addMyChallengesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // add new challenge to db

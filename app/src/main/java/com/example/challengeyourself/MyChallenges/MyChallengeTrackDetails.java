@@ -9,85 +9,84 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.Navigation;
 
 import com.example.challengeyourself.ChallengeInfoArgs;
-import com.example.challengeyourself.ChallengeModel.Challenge;
-import com.example.challengeyourself.ChallengeModel.ChallengeModel;
 import com.example.challengeyourself.ChallengeModel.ChallengeTrack;
 import com.example.challengeyourself.ChallengeModel.DayTrack;
 import com.example.challengeyourself.ChallengeModel.MyChallengeModel;
-import com.example.challengeyourself.MenuChallengesListFragment;
 import com.example.challengeyourself.R;
-import com.example.challengeyourself.Utilities.Convertor;
+import com.example.challengeyourself.Utilities.Converter;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class MyChallengeTrackDetails extends Fragment {
 
 
     private ArrayList<DayTrack> trackList;
-    private Convertor convertor = new Convertor();
+    private Converter convertor = new Converter();
     private ChallengeTrack myChallengeFromDB;
+    private TextView _challengeNameTextView;
+    private TextView _challengeDescriptionTextView;
+    private ListView _track_list_view;
+    private View _view;
+    private Button _saveBtn;
 
     @SuppressLint("ResourceType")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_my_challenge_track_details, container, false);
+        // Get views
+        _view = inflater.inflate(R.layout.fragment_my_challenge_track_details, container, false);
+        _challengeNameTextView = _view.findViewById(R.id.mychallenges_track_d_name);
+        _challengeDescriptionTextView = _view.findViewById(R.id.mychallenges_track_d_detailes);
+        _track_list_view = _view.findViewById(R.id.fragment_my_challenge_list_view);
+        _saveBtn = _view.findViewById(R.id.fragment_my_challenges_track_save_btn);
 
+
+        // Get current challenge from bundle
         assert getArguments() != null;
         String idString = ChallengeInfoArgs.fromBundle(getArguments()).getChallengeId();
 
-        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+//        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
 
-
+        // Get current challenge from db
         myChallengeFromDB = MyChallengeModel.instance.getChallengeTrackById(Integer.parseInt(idString));
 
-        ListView track_list_view = view.findViewById(R.id.fragment_my_challenge_list_view);
-
+        // Set views
+        _challengeNameTextView.setText(myChallengeFromDB.getChallenge().getName());
+        _challengeDescriptionTextView.setText(myChallengeFromDB.getChallenge().getFreeText());
         trackList = convertor.FromHashToObjectList(myChallengeFromDB.getDayTrack());
-
         Collections.sort(trackList);
 
+        // Set adapter to init each track data
         MyChallengeTrackDetailsAdapter adapter = new MyChallengeTrackDetailsAdapter(getContext(), R.layout.fragment_my_challenge_track_details, trackList);
+        _track_list_view.setAdapter(adapter);
 
-        track_list_view.setAdapter(adapter);
-
-
-
-        Button saveBtn = view.findViewById(R.id.fragment_my_challenges_track_save_btn);
-
-        saveBtn.setOnClickListener(new View.OnClickListener() {
+        _saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // add new challenge to db
-//                ChallengeModel.instance.addChallenge(new Challenge(nameView.getText().toString(), Integer.parseInt(durationView.getText().toString()),descriptionView.getText().toString()));
-//                Toast.makeText(getActivity(), "Challenge was added to the list", Toast.LENGTH_LONG).show();
-//                Navigation.findNavController(view).popBackStack();
-
                 // update local list
                 myChallengeFromDB.setDayTrackList(trackList);
 
                 // update db
                 MyChallengeModel.instance.setMyChallenge(myChallengeFromDB);
+
+//                Navigation.findNavController(view).popBackStack();
             }
         });
 
 
-        track_list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        _track_list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("TAG", "the position is: " + String.valueOf(position));
             }
         });
-        return view;
+        return _view;
     }
 }

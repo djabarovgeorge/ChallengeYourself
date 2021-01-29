@@ -26,7 +26,7 @@ public class ChallengeModel {
     public Challenge getChallenge(int id) {
         List<Challenge> chList = getChallengesList();
         for (Challenge challenge: chList) {
-            if(challenge.id == id)
+            if(challenge.getId() == id)
                 return challenge;
         }
         return null;
@@ -34,5 +34,13 @@ public class ChallengeModel {
 
     public void addChallenge(Challenge challenge){
         challengesTable.addChallenge(challenge);
+    }
+
+    public boolean clearTable(){
+        return challengesTable.clearTable();
+    }
+
+    public void deleteChallenge(int challengeId) {
+        challengesTable.deleteChallenge(challengeId);
     }
 }
