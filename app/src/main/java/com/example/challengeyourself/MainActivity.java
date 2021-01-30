@@ -1,4 +1,9 @@
 package com.example.challengeyourself;
+/*Assigment:3
+Campus:Ashdod
+Author:Anna Rogojine 323686477
+Author:George Djabarov 321335531
+ */
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         MyChallengeModel.instance.initDatabase(this);
 
         // clean my challenges table
-//        ChallengeModel.instance.clearTable();
-//        MyChallengeModel.instance.clearTable();
+        ChallengeModel.instance.clearTable();
+        MyChallengeModel.instance.clearTable();
     }
 }

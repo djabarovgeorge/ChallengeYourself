@@ -1,4 +1,9 @@
 package com.example.challengeyourself;
+/*Assigment:3
+Campus:Ashdod
+Author:Anna Rogojine 323686477
+Author:George Djabarov 321335531
+ */
 
 import android.Manifest;
 import android.content.Context;

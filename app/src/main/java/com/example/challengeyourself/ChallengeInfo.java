@@ -1,4 +1,9 @@
 package com.example.challengeyourself;
+/*Assigment:3
+Campus:Ashdod
+Author:Anna Rogojine 323686477
+Author:George Djabarov 321335531
+ */
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
